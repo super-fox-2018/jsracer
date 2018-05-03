@@ -1,10 +1,19 @@
-// let argv = process.argv;
+let argv = process.argv;
 // playerSize = argv[2];
 // trackSize = argv[3];
 
-const players = ['a', 'b', 'c'];
-const trackSize = 10;
-const playerPos = [0, 0, 0];
+const playerSize = argv[2];
+// const trackSize = 10;
+const trackSize = argv[3];
+const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+// const players = ['a', 'b', 'c'];
+// const playerPos = [0, 0, 0];
+const players = [];
+const playerPos = []; 
+for (let i = 0; i < playerSize; i++) {
+  players.push(alphabet[i]);
+  playerPos.push(0);
+}
 
 function sleep(milliseconds) {
   let start = new Date().getTime();
@@ -15,7 +24,7 @@ function sleep(milliseconds) {
   }
 }
 
-function dice () {
+function dice() {
   const max = 6;
   const min = 1;
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -34,7 +43,7 @@ function printLine (player, pos) {
 }
 
 function printBoard () {
-  console.log(playerPos);
+  //console.log(playerPos);
   for (let i = 0; i < players.length; i++) {
     printLine(players[i], playerPos[i]);
   }
@@ -58,7 +67,8 @@ function finished () {
 
 function winner () {
   const winnerIndex = playerPos.indexOf(trackSize);
-  console.log('Your winner: ', players[winnerIndex]);
+  // console.log('Your winner: ', players[winnerIndex]);
+  console.log(`Player ${players[winnerIndex]} wins!`)
 }
 
 function resetBoard() {
@@ -69,6 +79,7 @@ let done = false;
 
 while (!done) {
   for (let i = 0; i < players.length; i++) {
+    resetBoard();
     advancedPlayer(players[i]);
     printBoard();
     done = finished();
