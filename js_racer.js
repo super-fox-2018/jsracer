@@ -19,13 +19,12 @@ function print_board(player, line) {
   var arr = [];
   var temp = "";
   var origin = 0;
-  //Initial
+
   for(var i = 0; i < playerArr.length; i++){
     var lineArr = print_line(playerArr[i], 0, line);  //'a', 0, 15
     arr.push(lineArr);
   }
 
-  console.log(arr);
   var position = [0,0,0];
   var winner = [];
   var maxIdx = line - 1;
