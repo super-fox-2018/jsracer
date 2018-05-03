@@ -111,11 +111,7 @@ function play(length, sumPlayer, playerlist, position) {
 }
 
 
-
-
-
-
-//initialzation
+//init
 print_board(18, 3)
 //predefined player and pos
 var playerlist = generatePlayer(3) //[a,b,c]
