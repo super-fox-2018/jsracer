@@ -21,21 +21,26 @@ function print_board(player, line) {
   var origin = 0;
 
   for(var i = 0; i < playerArr.length; i++){
-    var lineArr = print_line(playerArr[i], 0, line);  //'a', 0, 15
+    var lineArr = (print_line(playerArr[i], 0, line)).join("|");  //'a', 0, 15
     arr.push(lineArr);
   }
-
+  for(let i = 0; i < arr.length; i++){
+    console.log(arr[i]);
+    sleep(500);
+  }
+  reset_board();
   var position = [0,0,0];
   var winner = [];
   var maxIdx = line - 1;
   do{
+
     for(var j = 0; j < player; j++){
       /* --------------------------------------
                       FUNCTION METHOD
       -----------------------------------------*/
       var move = dice();
-      console.log("move: " + move)
-      if((position[j] + move) >maxIdx){
+      // console.log("move: " + move)
+      if((position[j] + move) >= maxIdx){
         arr[j] = (print_line(playerArr[j], maxIdx, line)).join("|");
         winner.push(playerArr[j]);
       }
@@ -68,9 +73,11 @@ function print_board(player, line) {
 
       // for(let i=0; i<arr.length; i++) {
       //   console.log(arr[i].join('|'));
+      //   sleep(600);
       // }
+      console.log(arr[j]);
+      sleep(600);
     }
-  console.log(arr);
   reset_board();
  }while(finished(arr) !== true)
 
