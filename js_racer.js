@@ -63,17 +63,10 @@ function playing(gameBoard){
       sleep(1000)
       var move = dice()
       if(positions[i-1] + move >= arg[2]-1){
-        if(positions[i-1] + move > arg[2]-1){
-          var temp = gameBoard[i][positions[i-1]]
-          gameBoard[i][positions[i-1]] = ' '
-          positions[i-1] = arg[2]-1
-          gameBoard[i][positions[i-1]] = temp
-        }else{
-          var temp = gameBoard[i][positions[i-1]]
-          gameBoard[i][positions[i-1]] = ' '
-          positions[i-1] += move
-          gameBoard[i][positions[i-1]] = temp
-        }
+        var temp = gameBoard[i][positions[i-1]]
+        gameBoard[i][positions[i-1]] = ' '
+        positions[i-1] = arg[2]-1
+        gameBoard[i][positions[i-1]] = temp
         print_board(gameBoard,gameBoard.length)
         finished(gameBoard[i][positions[i-1]])
         playing = false
