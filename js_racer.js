@@ -42,8 +42,8 @@ function gameSetup(player, pos) {
       playerInGame = gameBoard[j][pos] == playerInGame ? playerName[parseInt(Math.random()*playerName.length-1)] : playerInGame
     }
     gameBoard[i] = []
-    gameBoard[i][pos]=playerInGame
     gameBoard[i].push(...generateboard(arg[2]))
+    gameBoard[i][pos]=playerInGame
     console.log(gameBoard[i].join(' | '))
   }
   console.log('\n\n\n')
@@ -62,14 +62,14 @@ function playing(gameBoard){
       // ketika pemenang ditemukan game akan berakhir
       sleep(1000)
       var move = dice()
-      if(positions[i-1] + move >= arg[2]-1){
+      if(finished(positions[i-1]+move)){
         var temp = gameBoard[i][positions[i-1]]
         gameBoard[i][positions[i-1]] = ' '
         positions[i-1] = arg[2]-1
         gameBoard[i][positions[i-1]] = temp
         print_board(gameBoard,gameBoard.length)
-        finished(gameBoard[i][positions[i-1]])
         playing = false
+        console.log(`${gameBoard[i][positions[i-1]]} is the winner!`)
         break;
       }
       var temp = gameBoard[i][positions[i-1]]
@@ -82,11 +82,14 @@ function playing(gameBoard){
   }
 }
 
-function finished(winner) {
-  console.log(`${winner} wins!`)
+function finished(currentPlace) {
+  if(currentPlace >= arg[2]-1){
+    return true
+  }
+  return false
 }
 
 function reset_board() {
   console.log("\x1B[2J")
 }
-playing(gameSetup(arg[3],0))
+playing(gameSetup(arg[3],5))
