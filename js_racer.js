@@ -92,4 +92,4 @@ function finished(currentPlace) {
 function reset_board() {
   console.log("\x1B[2J")
 }
-playing(gameSetup(arg[3],5))
+playing(gameSetup(arg[3],5))//parameter kedua untuk posisi mulainya
