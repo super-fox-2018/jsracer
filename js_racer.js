@@ -60,7 +60,7 @@ function playing(gameBoard){
       // setiap kali jalan positions dari player 1 akan di update
       // setelah itu akan berlanjut ke player selanjutnya
       // ketika pemenang ditemukan game akan berakhir
-      sleep(1000)
+      sleep(200)
       var move = dice()
       if(finished(positions[i-1]+move)){
         var temp = gameBoard[i][positions[i-1]]
@@ -92,4 +92,6 @@ function finished(currentPlace) {
 function reset_board() {
   console.log("\x1B[2J")
 }
-playing(gameSetup(arg[3],5))//parameter kedua untuk posisi mulainya
+var startingPosition = +arg[4]
+var Boardlength = arg[3]
+playing(gameSetup(Boardlength,startingPosition))//parameter kedua untuk posisi mulainya
