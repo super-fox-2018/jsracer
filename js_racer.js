@@ -55,6 +55,7 @@ function startPlay(totalPlayer, trackLength) {
       board[i]=newLine.join('|');
       // console.log(positions);
     }
+    // console.log(dadu);
     console.log(board.join('\n'));
     sleep(700);
   }
@@ -92,8 +93,13 @@ function winner(win) {
   return `Player '${win}' is the winner`;
 }
 
-console.log(startPlay(6,40));
 
 function reset_board() {
   console.log("\x1B[2J")
 }
+
+let argv = process.argv;
+let totalPlayer = argv[2];
+let trackLength = argv[3];
+
+console.log(startPlay(totalPlayer,trackLength));
