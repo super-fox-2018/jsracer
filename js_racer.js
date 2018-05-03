@@ -15,7 +15,7 @@ function sleep(milliseconds) {
 }
 
 function print_board(player, line) {
-  var playerArr = playerArr(player);
+  var playerArr = playerName(player);
   var arr = [];
   var temp = "";
   var origin = 0;
@@ -36,11 +36,11 @@ function print_board(player, line) {
       var move = dice();
       console.log("move: " + move)
       if((position[j] + move) >maxIdx){
-        arr[j] = print_line(playerArr[j], maxIdx, line);
+        arr[j] = (print_line(playerArr[j], maxIdx, line)).join("|");
         winner.push(playerArr[j]);
       }
       else{
-        arr[j] = print_line(playerArr[j], position[j] + move, line);
+        arr[j] = (print_line(playerArr[j], position[j] + move, line)).join("|");
         position[j] += move;
       }
       /* --------------------------------------
@@ -64,10 +64,13 @@ function print_board(player, line) {
         position[j] += move;
       }*/
 
-      for(let i=0; i<arr.length; i++) {
-        console.log(arr[i].join('|'));
-      }
+      // console.log(arr);
+
+      // for(let i=0; i<arr.length; i++) {
+      //   console.log(arr[i].join('|'));
+      // }
     }
+  console.log(arr);
   reset_board();
  }while(finished(arr) !== true)
 
@@ -96,7 +99,7 @@ function print_line(playerName, posPlayer, line) {  //'a', 0, 15
 
 }
 
-function playerArr(player) {
+function playerName(player) {
   var str = "abcdefghijklmnopqrstuvxyz";
   var arr = str.split("");
   var playerArr = [];
