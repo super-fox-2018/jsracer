@@ -15,7 +15,7 @@ function sleep(milliseconds) {
 }
 
 function print_board(player, line) {
-  var playerArr = advanced_player(player);
+  var playerArr = playerArr(player);
   var arr = [];
   var temp = "";
   var origin = 0;
@@ -96,7 +96,7 @@ function print_line(playerName, posPlayer, line) {  //'a', 0, 15
 
 }
 
-function advanced_player(player) {
+function playerArr(player) {
   var str = "abcdefghijklmnopqrstuvxyz";
   var arr = str.split("");
   var playerArr = [];
@@ -123,9 +123,7 @@ function finished(arr) {
   return false;
 
 }
-function winner(player) {
 
-}
 function reset_board() {
   console.log("\x1B[2J")
 }
